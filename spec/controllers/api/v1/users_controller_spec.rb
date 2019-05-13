@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
-  context 'users registrations' do   
+  context 'users registrations users#create' do
     context 'when the params are valid' do
       before(:example){ post :create, params: {user: {name: 'p1',mobile: '9972339927',password: '123456'} } }
       it 'successfully creates the user' do
@@ -18,9 +18,15 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   context 'when the params are invalid' do
     # first make the spec to fail
     # expected {} to include {:password => "can't be left blank"}
-    it 'the user object that exists in the create should have errros' do
-      post :create,params: {user: {name: 'p1',mobile: '9972339927',password: ''}}
-      expect(assigns[:user].errors.messages).to include(:password => 'can\'t be left blank')
+    it 'the user instance should have errors when the params are invalid' do
+      params = {user: { name: 'p1', mobile: '9972339927', password: '' } }
+      post :create, params: params
+      expect(assigns[:user].errors.messages).to include(:password => ['can\'t be blank'])
+    end
+    it 'the response obtained sohould have json content' do
+      params = { user: { name: 'p1', mobile: '9972339927', password: '' } }
+      post :create, params: params
+      expect(response.content_type).to eq('application/json')
     end
   end
 end

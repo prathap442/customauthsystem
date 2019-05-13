@@ -32,8 +32,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
-  gem 'rspec-rails'
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing',     '~> 1.0.2'
+  gem 'rspec-rails',                  '~> 3.7'
+  gem 'shoulda',                      '~> 3.5'
+  gem 'shoulda-callback-matchers',    '~> 1.1', '>= 1.1.3'
 end
 
 group :development do
