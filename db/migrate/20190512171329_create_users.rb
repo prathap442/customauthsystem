@@ -3,12 +3,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name
       t.string :mobile
-      t.string :password
+      t.string :password_digest
       t.string :otp_sent
-      t.string :is_verified
-      t.string :is_registered
+      t.boolean :is_verified,default: false
+      t.boolean :is_registered,default: false
       t.string :session_token
-
       t.timestamps
     end
   end
