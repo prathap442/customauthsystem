@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2019_05_12_171329) do
     t.boolean "is_verified", default: false
     t.boolean "is_registered", default: false
     t.string "session_token"
+    t.datetime "signed_in_at"
+    t.datetime "last_signed_in_at"
+    t.string "otp_generated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

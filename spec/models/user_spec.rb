@@ -11,6 +11,6 @@ RSpec.describe User, type: :model do
     is_expected.to validate_presence_of(:password)
   end
   it 'is expected to validate uniqueness of mobile' do
-    should validate_uniqueness_of(:mobile).case_insensitive
+    should validate_uniqueness_of(:mobile)
   end
 end
